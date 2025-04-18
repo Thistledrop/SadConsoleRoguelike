@@ -37,7 +37,8 @@ internal static class Factory
             .ConfigAndGenerateSafe(gen =>
             {
                 gen.AddSteps(DefaultAlgorithms.DungeonMazeMapSteps(minRooms: config.MinRooms, maxRooms: config.MaxRooms,
-                    roomMinSize: config.RoomMinSize, roomMaxSize: config.RoomMaxSize, saveDeadEndChance: 0));
+                    roomMinSize: config.RoomMinSize, roomMaxSize: config.RoomMaxSize, saveDeadEndChance: 0))
+                .AddSteps();
             });
 
         // Extract components from the map GoRogue generated which hold basic information about the map

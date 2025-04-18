@@ -24,15 +24,22 @@ internal static class Factory
         {
             "Floor",
             new TerrainAppearanceDefinition(
-                new ColoredGlyph(Color.White, new Color(200, 180, 50), 0),
-                new ColoredGlyph(Color.White, new Color(50, 50, 150), 0)
+                new ColoredGlyph(Colors.FloorFov,Colors.FloorBackgroundFov, '.'),
+                new ColoredGlyph(Colors.Floor, Colors.FloorBackground, '.')
             )
         },
         {
             "Wall",
             new TerrainAppearanceDefinition(
-                new ColoredGlyph(Color.White, new Color(130, 110, 50), 0),
-                new ColoredGlyph(Color.White, new Color(0, 0, 100), 0)
+                new ColoredGlyph(Colors.WallFov, Colors.WallBackgroundFov, '#'),
+                new ColoredGlyph(Colors.Wall, Colors.WallBackground, '#')
+            )
+        },
+        {
+            "Door",
+            new TerrainAppearanceDefinition(
+                new ColoredGlyph(Colors.DoorFov, Colors.DoorBackgroundFov, '+'),
+                new ColoredGlyph(Colors.Door, Colors.DoorBackground, '+')
             )
         },
     };
@@ -46,7 +53,7 @@ internal static class Factory
     public static RogueLikeEntity Player()
     {
         // Create entity with appropriate attributes
-        var player = new RogueLikeEntity('@', false, layer: (int)GameMap.Layer.Monsters)
+        var player = new RogueLikeEntity(Colors.Player, '@', false, layer: (int)GameMap.Layer.Monsters)
         {
             Name = "Player"
         };
@@ -65,7 +72,7 @@ internal static class Factory
 
     public static RogueLikeEntity Orc()
     {
-        var enemy = new RogueLikeEntity(new Color(63, 127, 63), 'o', false, layer: (int)GameMap.Layer.Monsters)
+        var enemy = new RogueLikeEntity(Colors.OozeColor, 'o', false, layer: (int)GameMap.Layer.Monsters)
         {
             Name = "Orc"
         };
@@ -79,7 +86,7 @@ internal static class Factory
 
     public static RogueLikeEntity Troll()
     {
-        var enemy = new RogueLikeEntity(new Color(0, 127, 0), 'T', false, layer: (int)GameMap.Layer.Monsters)
+        var enemy = new RogueLikeEntity(Colors.GoblinColor, 'T', false, layer: (int)GameMap.Layer.Monsters)
         {
             Name = "Troll"
         };
