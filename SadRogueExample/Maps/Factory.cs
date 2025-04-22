@@ -4,6 +4,7 @@ using GoRogue.Random;
 using SadRogue.Primitives;
 using SadRogue.Primitives.GridViews;
 using ShaiRandom.Generators;
+using System.Linq;
 
 namespace SadRogueExample.Maps;
 
@@ -53,7 +54,9 @@ internal static class Factory
         map.ApplyTerrainOverlay(generatedMap, (pos, val) => val ? MapObjects.Factory.Floor(pos) : MapObjects.Factory.Wall(pos));
 
         // Spawn player
-        SpawnPlayer(map, rooms);
+        //SpawnPlayer(map, rooms);
+
+        SpawnStairs(map, rooms);
 
         // Spawn enemies/items/etc
         SpawnMonsters(map, rooms, config.MaxMonstersPerRoom);
@@ -67,6 +70,21 @@ internal static class Factory
         // Add player to map at the center of the first room we placed
         Engine.Player.Position = rooms.Items[0].Center;
         map.AddEntity(Engine.Player);
+    }
+
+    private static void SpawnStairs(GameMap map, ItemList<Rectangle> rooms)
+    {
+        var stairUp = MapObjects.Factory.StairUp();
+        stairUp.Position = GlobalRandom.DefaultRNG.RandomPosition(rooms.Items[0], pos => map.WalkabilityView[pos]);
+        map.stairsUpLocation = stairUp.Position;
+        
+        var stairDown = MapObjects.Factory.StairDown();
+        stairDown.Position = GlobalRandom.DefaultRNG.RandomPosition(rooms.Items[1], pos => map.WalkabilityView[pos]);
+        //TODO: make down stairs spawn in a random room
+        map.stairsDownLocation = stairDown.Position;
+
+        map.AddEntity(stairUp);
+        map.AddEntity(stairDown);
     }
 
     private static void SpawnMonsters(GameMap map, ItemList<Rectangle> rooms, int maxMonstersPerRoom)

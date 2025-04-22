@@ -52,14 +52,11 @@ public class MainMenu : ControlsConsole
         // Create player entity
         Engine.Player = Factory.Player();
 
-        // Generate a dungeon map, and spawn the player/enemies
-        var map = Maps.Factory.Dungeon(new(100, 60, 20, 30, 8, 12, 2, 2));
-
         // Calculate initial FOV for player
         Engine.Player.AllComponents.GetFirst<PlayerFOVController>().CalculateFOV();
 
         // Create a MapScreen and set it as the active screen so that it processes input and renders itself.
-        Engine.GameScreen = new MainGame(map);
+        Engine.GameScreen = new MainGame();
         GameHost.Instance.Screen = Engine.GameScreen;
     }
 

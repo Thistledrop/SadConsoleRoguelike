@@ -17,12 +17,16 @@ namespace SadRogueExample.Maps;
 /// </summary>
 internal class GameMap : RogueLikeMap
 {
+    public Point stairsUpLocation;
+    public Point stairsDownLocation;
+
     /// <summary>
     /// Map layers for rendering/collision.
     /// </summary>
     public enum Layer
     {
         Terrain = 0,
+        Stairs,
         Items,
         Monsters
     }
@@ -33,6 +37,12 @@ internal class GameMap : RogueLikeMap
         // Ensures HostileDeath is triggered when anything except the player dies so that corpses appear and messages trigger.
         Entities.ItemAdded += EntitiesOnItemAdded;
         Entities.ItemRemoved += EntitiesOnItemRemoved;
+    }
+
+    public bool AddPlayerAtPosition(Point pos)
+    {
+        Engine.Player.Position = pos;
+        return this.TryAddEntity(Engine.Player);
     }
 
     /// <summary>

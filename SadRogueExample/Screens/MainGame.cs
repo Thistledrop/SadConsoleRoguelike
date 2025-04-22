@@ -1,6 +1,7 @@
 ﻿using System;
 using SadConsole;
 using SadConsole.Components;
+using SadConsole.EasingFunctions;
 using SadRogueExample.MapObjects.Components;
 using SadRogueExample.Maps;
 using SadRogueExample.Screens.MainGameMenus;
@@ -17,14 +18,16 @@ namespace SadRogueExample.Screens;
 /// </summary>
 internal class MainGame : ScreenObject
 {
-    public readonly GameMap Map;
-    public readonly MessageLogPanel MessagePanel;
-    public readonly StatusPanel StatusPanel;
+    public GameMap Map;
+    public int currentLevel;
+    public readonly MapManager MapManager;
+    public MessageLogPanel MessagePanel;
+    public StatusPanel StatusPanel;
 
     /// <summary>
     /// Component which locks the map's view onto an entity (usually the player).
     /// </summary>
-    public readonly SurfaceComponentFollowTarget ViewLock;
+    public SurfaceComponentFollowTarget ViewLock;
 
     private IComponent? _currentState;
 
@@ -44,21 +47,27 @@ internal class MainGame : ScreenObject
     private const int StatusBarWidth = 25;
     private const int BottomPanelHeight = 5;
 
-    public MainGame(GameMap map)
+    public MainGame()
     {
-        // Record the map we're rendering
-        Map = map;
+        MapManager = new MapManager();
 
-        // Create a renderer for the map, specifying viewport size.
+        currentLevel = 0;
+
+        changeLevel(currentLevel);
+    }
+
+    public void changeLevel(int level)
+    {
+        currentLevel = level;
+        GameMap newMap = MapManager.getLevelMap(level);
+
+        Map = newMap;
+
+        Engine.Player.AllComponents.GetFirst<PlayerFOVController>().CalculateFOV();
+
         Map.DefaultRenderer = Map.CreateRenderer((Engine.ScreenWidth, Engine.ScreenHeight - BottomPanelHeight));
-
-        // Make the Map (which is also a screen object) a child of this screen, and ensure the default renderer receives input focus.
+        Children.Clear();
         Children.Add(Map);
-        Map.DefaultRenderer.IsFocused = true;
-
-        // Center view on player as they move (by default)
-        ViewLock = new SurfaceComponentFollowTarget { Target = Engine.Player };
-        Map.DefaultRenderer.SadComponents.Add(ViewLock);
 
         // Create message log
         MessagePanel = new MessageLogPanel(Engine.ScreenWidth - StatusBarWidth - 1, BottomPanelHeight)
@@ -74,14 +83,17 @@ internal class MainGame : ScreenObject
             Position = new(0, Engine.ScreenHeight - BottomPanelHeight)
         };
 
-        // Set main map state as default
-        CurrentState = new MainMapState(this);
-
         // Add player death handler
         Engine.Player.AllComponents.GetFirst<Combatant>().Died += PlayerDeath;
 
-        // Write welcome message
-        Engine.MessageLog.Add(new("Hello and welcome, adventurer, to yet another dungeon!", MessageColors.WelcomeTextAppearance));
+        Map.DefaultRenderer.IsFocused = true;
+
+        ViewLock = new SurfaceComponentFollowTarget { Target = Engine.Player };
+        Map.DefaultRenderer.SadComponents.Add(ViewLock);
+
+        CurrentState = new MainMapState(this);
+
+        Engine.MessageLog.Add(new($"Hello and welcome, adventurer, to dungeon level {currentLevel}", MessageColors.WelcomeTextAppearance));
     }
 
     public void Uninitialize()
@@ -89,6 +101,13 @@ internal class MainGame : ScreenObject
         MessagePanel.Parent = null;
         StatusPanel.Parent = null;
         Engine.Player.AllComponents.GetFirst<Combatant>().Died -= PlayerDeath;
+    }
+
+    public void DisplayStairConfirmation(bool isUp)
+    {
+        Engine.MessageLog.Add(new("You bumped the stairs"));
+
+        Children.Add(new UseStairsConfirmation(isUp));
     }
 
     /// <summary>
@@ -102,6 +121,5 @@ internal class MainGame : ScreenObject
 
         // Switch to game over screen
         Children.Add(new GameOver());
-
     }
 }

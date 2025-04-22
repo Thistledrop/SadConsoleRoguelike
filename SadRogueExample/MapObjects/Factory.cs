@@ -42,6 +42,20 @@ internal static class Factory
                 new ColoredGlyph(Colors.Door, Colors.DoorBackground, '+')
             )
         },
+        {
+            "StairUp",
+            new TerrainAppearanceDefinition(
+                new ColoredGlyph(Colors.FloorFov, Colors.FloorBackgroundFov, '^'),
+                new ColoredGlyph(Colors.Floor, Colors.FloorBackground, '^')
+            )
+        },
+        {
+            "StairDown",
+            new TerrainAppearanceDefinition(
+                new ColoredGlyph(Colors.FloorFov, Colors.FloorBackgroundFov, 'v'),
+                new ColoredGlyph(Colors.Floor, Colors.FloorBackground, 'v')
+            )
+        },
     };
 
     public static Terrain Floor(Point position)
@@ -49,6 +63,24 @@ internal static class Factory
 
     public static Terrain Wall(Point position)
         => new(position, AppearanceDefinitions["Wall"], (int)GameMap.Layer.Terrain, false, false);
+
+    public static RogueLikeEntity StairUp()
+    {
+        var stair = new RogueLikeEntity(Colors.Door, '^', false, true, layer:(int)GameMap.Layer.Stairs);
+
+        stair.AllComponents.Add(new Stair(true));
+
+        return stair;
+    }
+
+    public static RogueLikeEntity StairDown()
+    {
+        var stair = new RogueLikeEntity(Colors.Door, 'v', false, true, layer: (int)GameMap.Layer.Stairs);
+
+        stair.AllComponents.Add(new Stair(false));
+
+        return stair;
+    }
 
     public static RogueLikeEntity Player()
     {
