@@ -53,7 +53,7 @@ internal static class Factory
         // Translate GoRogue's terrain data into actual integration library objects.
         map.ApplyTerrainOverlay(generatedMap, (pos, val) => val ? MapObjects.Factory.Floor(pos) : MapObjects.Factory.Wall(pos));
 
-        // Spawn player
+        //Spawn player
         //SpawnPlayer(map, rooms);
 
         SpawnStairs(map, rooms);
@@ -65,22 +65,24 @@ internal static class Factory
         return map;
     }
 
-    private static void SpawnPlayer(GameMap map, ItemList<Rectangle> rooms)
-    {
-        // Add player to map at the center of the first room we placed
-        Engine.Player.Position = rooms.Items[0].Center;
-        map.AddEntity(Engine.Player);
-    }
+    //private static void SpawnPlayer(GameMap map, ItemList<Rectangle> rooms)
+    //{
+    //    // Add player to map at the center of the first room we placed
+    //    Engine.Player.Position = rooms.Items[0].Center;
+    //    map.AddEntity(Engine.Player);
+    //}
 
     private static void SpawnStairs(GameMap map, ItemList<Rectangle> rooms)
     {
         var stairUp = MapObjects.Factory.StairUp();
-        stairUp.Position = GlobalRandom.DefaultRNG.RandomPosition(rooms.Items[0], pos => map.WalkabilityView[pos]);
+        //stairUp.Position = GlobalRandom.DefaultRNG.RandomPosition(rooms.Items[0], pos => map.WalkabilityView[pos]);
+        stairUp.Position = rooms.Items[0].Center;
         map.stairsUpLocation = stairUp.Position;
         
         var stairDown = MapObjects.Factory.StairDown();
-        stairDown.Position = GlobalRandom.DefaultRNG.RandomPosition(rooms.Items[1], pos => map.WalkabilityView[pos]);
+        //stairDown.Position = GlobalRandom.DefaultRNG.RandomPosition(rooms.Items[1], pos => map.WalkabilityView[pos]);
         //TODO: make down stairs spawn in a random room
+        stairDown.Position = rooms.Items[1].Center;
         map.stairsDownLocation = stairDown.Position;
 
         map.AddEntity(stairUp);

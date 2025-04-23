@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using GoRogue.GameFramework;
 using SadConsole;
 using SadRogue.Integration;
@@ -39,10 +41,29 @@ internal class GameMap : RogueLikeMap
         Entities.ItemRemoved += EntitiesOnItemRemoved;
     }
 
-    public bool AddPlayerAtPosition(Point pos)
+    public void AddPlayerAtPosition(Point pos)
     {
-        Engine.Player.Position = pos;
-        return this.TryAddEntity(Engine.Player);
+        Engine.Player.SafelySetCurrentMap(null, this, null, null);
+
+        foreach (Point p in AdjacencyRule.EightWay.Neighbors(pos))
+        {
+            Debug.WriteLine($"Attempting to place at {p}");
+            if (Engine.Player.CanMove(p))
+            {
+                Debug.WriteLine("Succeeded");
+                Engine.Player.Position = p;
+
+                this.TryAddEntity(Engine.Player);
+                return;
+            }
+            else 
+            { 
+                Debug.WriteLine("Failed");
+            }
+                
+        }
+
+        throw new Exception($"Could not place player around position: {pos}");
     }
 
     /// <summary>

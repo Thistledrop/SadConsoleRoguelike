@@ -25,10 +25,7 @@ namespace SadRogueExample.Screens
 
             if(levelMap != null)
             {
-                if(levelMap.AddPlayerAtPosition(levelMap.stairsDownLocation.Subtract(Direction.Down)))
-                {
-                    levelMap.AddPlayerAtPosition(levelMap.stairsDownLocation.Subtract(Direction.Up));
-                }
+                levelMap.AddPlayerAtPosition(levelMap.stairsDownLocation.Subtract(Direction.Up));
                 return levelMap; 
             }
 
