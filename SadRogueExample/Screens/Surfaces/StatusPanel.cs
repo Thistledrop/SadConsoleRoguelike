@@ -19,10 +19,14 @@ internal class StatusPanel : ControlsConsole
     public StatusPanel(int width, int height)
         : base(width, height)
     {
+        this.DrawBox(new Rectangle(0, 0, width, height), ShapeParameters.CreateStyledBox(ICellSurface.ConnectedLineThin, new ColoredGlyph(Color.Violet, Color.Black)));
+        this.Print(10, 0, "Stats");
+
         // Create an HP bar with the appropriate coloring and background glyphs
-        HPBar = new ProgressBar(Width, 1, HorizontalAlignment.Left)
+        HPBar = new ProgressBar(width - 2, 1, HorizontalAlignment.Left)
         {
-            DisplayTextColor = Color.White
+            DisplayTextColor = Color.White,
+            Position = new(1, 2)
         };
         HPBar.SetThemeColors(Themes.StatusPanel.HPBarColors);
         ((ProgressBarTheme)HPBar.Theme).Background.SetGlyph(' ');
@@ -31,16 +35,6 @@ internal class StatusPanel : ControlsConsole
         Controls.Add(HPBar);
         Engine.Player.AllComponents.GetFirst<Combatant>().HPChanged += OnPlayerHPChanged;
         UpdateHPBar();
-
-        // Create a label to display information about the tile the player is looking at
-        LookInfo = new Label(width)
-        {
-            DisplayText = "",
-            Position = (0, 1)
-        };
-
-        // Add label to controls
-        Controls.Add(LookInfo);
     }
 
     private void OnPlayerHPChanged(object? sender, EventArgs e)

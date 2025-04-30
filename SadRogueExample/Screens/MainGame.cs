@@ -22,6 +22,7 @@ internal class MainGame : ScreenObject
     public int currentLevel;
     public MessageLogPanel MessagePanel;
     public StatusPanel StatusPanel;
+    public MonsterHealthPanel MonsterPanel;
 
     /// <summary>
     /// Component which locks the map's view onto an entity (usually the player).
@@ -43,8 +44,9 @@ internal class MainGame : ScreenObject
         }
     }
 
-    private const int StatusBarWidth = 25;
-    private const int BottomPanelHeight = 5;
+    private const int StatusWidth = 25;
+    private const int StatusHeight = 10;
+    private const int BottomPanelHeight = 10;
 
     public MainGame()
     {
@@ -77,18 +79,25 @@ internal class MainGame : ScreenObject
         ViewLock = new SurfaceComponentFollowTarget { Target = Engine.Player };
         Map.DefaultRenderer.SadComponents.Add(ViewLock);
 
-        // Create message log
-        MessagePanel = new MessageLogPanel(Engine.ScreenWidth - StatusBarWidth - 1, BottomPanelHeight)
-        {
-            Parent = this,
-            Position = new(StatusBarWidth + 1, Engine.ScreenHeight - BottomPanelHeight)
-        };
-
-        // Create status panel
-        StatusPanel = new(StatusBarWidth, BottomPanelHeight)
+        // Create Message Log
+        MessagePanel = new MessageLogPanel(Engine.ScreenWidth - StatusWidth, BottomPanelHeight)
         {
             Parent = this,
             Position = new(0, Engine.ScreenHeight - BottomPanelHeight)
+        };
+
+        // Create Status Panel
+        StatusPanel = new StatusPanel(StatusWidth, StatusHeight)
+        {
+            Parent = this,
+            Position = new(Engine.ScreenWidth - StatusWidth, 0)
+        };
+
+        //Create Monster Health Panel
+        MonsterPanel = new MonsterHealthPanel(StatusWidth, Engine.ScreenHeight - StatusHeight)
+        {
+            Parent = this,
+            Position = new(Engine.ScreenWidth - StatusWidth, StatusHeight)
         };
 
         CurrentState = new MainMapState(this);

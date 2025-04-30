@@ -52,7 +52,7 @@ public class MessageLogPanel : Console
         {
             Engine.MessageLog.MessageAdded -= MessageLog_MessageAdded;
             _firstMessage = true;
-            Cursor.Position = (0, 0);
+            Cursor.Position = (2, 2);
         }
         else
         {
