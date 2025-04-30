@@ -20,7 +20,6 @@ internal class MainGame : ScreenObject
 {
     public GameMap Map;
     public int currentLevel;
-    public readonly MapManager MapManager;
     public MessageLogPanel MessagePanel;
     public StatusPanel StatusPanel;
 
@@ -49,8 +48,6 @@ internal class MainGame : ScreenObject
 
     public MainGame()
     {
-        MapManager = new MapManager();
-
         currentLevel = 0;
 
         changeLevel(currentLevel);
@@ -58,18 +55,22 @@ internal class MainGame : ScreenObject
 
     public void changeLevel(int level)
     {
+        if (Map != null)
+        {
+            Map.RemoveEntity(Engine.Player);
+            Map.RemoveRenderer(Map.DefaultRenderer); 
+        }
+        Children.Clear();
+
         currentLevel = level;
-        GameMap newMap = MapManager.getLevelMap(level);
+        GameMap newMap = Maps.Factory.Dungeon(new(100, 60, 20, 30, 8, 12, 2, 2));
+        newMap.AddPlayerAtPosition(newMap.stairsUpLocation);
 
         Map = newMap;
 
         Engine.Player.AllComponents.GetFirst<PlayerFOVController>().CalculateFOV();
-
-        if(Map.DefaultRenderer != null)
-        { Map.RemoveRenderer(Map.DefaultRenderer); }
         Map.DefaultRenderer = Map.CreateRenderer((Engine.ScreenWidth, Engine.ScreenHeight - BottomPanelHeight));
         
-        Children.Clear();
         Children.Add(Map);
         Map.DefaultRenderer.IsFocused = true;
 

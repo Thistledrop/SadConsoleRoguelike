@@ -53,24 +53,13 @@ internal static class Factory
         // Translate GoRogue's terrain data into actual integration library objects.
         map.ApplyTerrainOverlay(generatedMap, (pos, val) => val ? MapObjects.Factory.Floor(pos) : MapObjects.Factory.Wall(pos));
 
-        //Spawn player
-        //SpawnPlayer(map, rooms);
-
         SpawnStairs(map, rooms);
 
-        // Spawn enemies/items/etc
         SpawnMonsters(map, rooms, config.MaxMonstersPerRoom);
         SpawnItems(map, rooms, config.MaxItemsPerRoom);
 
         return map;
     }
-
-    //private static void SpawnPlayer(GameMap map, ItemList<Rectangle> rooms)
-    //{
-    //    // Add player to map at the center of the first room we placed
-    //    Engine.Player.Position = rooms.Items[0].Center;
-    //    map.AddEntity(Engine.Player);
-    //}
 
     private static void SpawnStairs(GameMap map, ItemList<Rectangle> rooms)
     {
