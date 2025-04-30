@@ -43,8 +43,6 @@ internal class GameMap : RogueLikeMap
 
     public void AddPlayerAtPosition(Point pos)
     {
-        Engine.Player.SafelySetCurrentMap(null, this, null, null);
-
         foreach (Point p in AdjacencyRule.EightWay.Neighbors(pos))
         {
             Debug.WriteLine($"Attempting to place at {p}");
@@ -56,13 +54,11 @@ internal class GameMap : RogueLikeMap
                 this.TryAddEntity(Engine.Player);
                 return;
             }
-            else 
-            { 
+            else
+            {
                 Debug.WriteLine("Failed");
             }
-                
         }
-
         throw new Exception($"Could not place player around position: {pos}");
     }
 

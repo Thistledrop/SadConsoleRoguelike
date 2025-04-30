@@ -28,7 +28,6 @@ namespace SadRogueExample.Screens
                 levelMap.AddPlayerAtPosition(levelMap.stairsDownLocation.Subtract(Direction.Up));
                 return levelMap; 
             }
-
             else
             {
                 return createNewLevel(level);

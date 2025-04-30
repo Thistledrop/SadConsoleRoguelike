@@ -65,9 +65,16 @@ internal class MainGame : ScreenObject
 
         Engine.Player.AllComponents.GetFirst<PlayerFOVController>().CalculateFOV();
 
+        if(Map.DefaultRenderer != null)
+        { Map.RemoveRenderer(Map.DefaultRenderer); }
         Map.DefaultRenderer = Map.CreateRenderer((Engine.ScreenWidth, Engine.ScreenHeight - BottomPanelHeight));
+        
         Children.Clear();
         Children.Add(Map);
+        Map.DefaultRenderer.IsFocused = true;
+
+        ViewLock = new SurfaceComponentFollowTarget { Target = Engine.Player };
+        Map.DefaultRenderer.SadComponents.Add(ViewLock);
 
         // Create message log
         MessagePanel = new MessageLogPanel(Engine.ScreenWidth - StatusBarWidth - 1, BottomPanelHeight)
@@ -83,15 +90,10 @@ internal class MainGame : ScreenObject
             Position = new(0, Engine.ScreenHeight - BottomPanelHeight)
         };
 
+        CurrentState = new MainMapState(this);
+
         // Add player death handler
         Engine.Player.AllComponents.GetFirst<Combatant>().Died += PlayerDeath;
-
-        Map.DefaultRenderer.IsFocused = true;
-
-        ViewLock = new SurfaceComponentFollowTarget { Target = Engine.Player };
-        Map.DefaultRenderer.SadComponents.Add(ViewLock);
-
-        CurrentState = new MainMapState(this);
 
         Engine.MessageLog.Add(new($"Hello and welcome, adventurer, to dungeon level {currentLevel}", MessageColors.WelcomeTextAppearance));
     }
