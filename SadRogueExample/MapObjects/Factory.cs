@@ -24,7 +24,7 @@ internal static class Factory
         {
             "Floor",
             new TerrainAppearanceDefinition(
-                new ColoredGlyph(Colors.FloorFov,Colors.FloorBackgroundFov, '.'),
+                new ColoredGlyph(Colors.FloorFov, Colors.FloorBackgroundFov, '.'),
                 new ColoredGlyph(Colors.Floor, Colors.FloorBackground, '.')
             )
         },
@@ -45,15 +45,15 @@ internal static class Factory
         {
             "StairUp",
             new TerrainAppearanceDefinition(
-                new ColoredGlyph(Colors.FloorFov, Colors.FloorBackgroundFov, '^'),
-                new ColoredGlyph(Colors.Floor, Colors.FloorBackground, '^')
+                new ColoredGlyph(Colors.StairFov, Colors.StairBackgroundFov, '^'),
+                new ColoredGlyph(Colors.Stair, Colors.StairBackground, '^')
             )
         },
         {
             "StairDown",
             new TerrainAppearanceDefinition(
-                new ColoredGlyph(Colors.FloorFov, Colors.FloorBackgroundFov, 'v'),
-                new ColoredGlyph(Colors.Floor, Colors.FloorBackground, 'v')
+                new ColoredGlyph(Colors.StairFov, Colors.StairBackgroundFov, 'v'),
+                new ColoredGlyph(Colors.Stair, Colors.StairBackground, 'v')
             )
         },
     };
@@ -66,7 +66,7 @@ internal static class Factory
 
     public static RogueLikeEntity StairUp()
     {
-        var stair = new RogueLikeEntity(Colors.Door, '^', false, true, layer:(int)GameMap.Layer.Stairs);
+        var stair = new RogueLikeEntity(Colors.Stair, '^', false, true, layer:(int)GameMap.Layer.Stairs);
 
         stair.AllComponents.Add(new Stair(true));
 
@@ -75,7 +75,7 @@ internal static class Factory
 
     public static RogueLikeEntity StairDown()
     {
-        var stair = new RogueLikeEntity(Colors.Door, 'v', false, true, layer: (int)GameMap.Layer.Stairs);
+        var stair = new RogueLikeEntity(Colors.Stair, 'v', false, true, layer: (int)GameMap.Layer.Stairs);
 
         stair.AllComponents.Add(new Stair(false));
 
@@ -85,7 +85,7 @@ internal static class Factory
     public static RogueLikeEntity Player()
     {
         // Create entity with appropriate attributes
-        var player = new RogueLikeEntity(Colors.Player, '@', false, layer: (int)GameMap.Layer.Monsters)
+        var player = new RogueLikeEntity(Colors.PlayerColor, '@', false, layer: (int)GameMap.Layer.Monsters)
         {
             Name = "Player"
         };
@@ -102,33 +102,7 @@ internal static class Factory
         return player;
     }
 
-    public static RogueLikeEntity Orc()
-    {
-        var enemy = new RogueLikeEntity(Colors.OozeColor, 'o', false, layer: (int)GameMap.Layer.Monsters)
-        {
-            Name = "Orc"
-        };
 
-        // Add AI component to bump action toward the player if the player is in view
-        enemy.AllComponents.Add(new HostileAI());
-        enemy.AllComponents.Add(new Combatant(10, 0, 3));
-
-        return enemy;
-    }
-
-    public static RogueLikeEntity Troll()
-    {
-        var enemy = new RogueLikeEntity(Colors.GoblinColor, 'T', false, layer: (int)GameMap.Layer.Monsters)
-        {
-            Name = "Troll"
-        };
-
-        // Add AI component to bump action toward the player if the player is in view
-        enemy.AllComponents.Add(new HostileAI());
-        enemy.AllComponents.Add(new Combatant(16, 1, 4));
-
-        return enemy;
-    }
 
     public static RogueLikeEntity Corpse(RogueLikeEntity entity)
         => new(entity.Appearance, layer: (int)GameMap.Layer.Items)

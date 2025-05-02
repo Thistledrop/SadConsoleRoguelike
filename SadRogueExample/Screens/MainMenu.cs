@@ -12,8 +12,7 @@ namespace SadRogueExample.Screens;
 /// </summary>
 public class MainMenu : ControlsConsole
 {
-    public MainMenu()
-        : base(15, 3)
+    public MainMenu() : base(15, 3)
     {
         // Position controls console
         Position = (Engine.ScreenWidth / 2 - Width / 2, Engine.ScreenHeight / 2 - Height / 2);
@@ -35,7 +34,7 @@ public class MainMenu : ControlsConsole
             Position = (0, 1)
         };
         loadGame.Click += LoadGameOnClick;
-        Controls.Add(newGame);
+        //Controls.Add(newGame);
 
         var exit = new Button(Width)
         {
@@ -50,7 +49,7 @@ public class MainMenu : ControlsConsole
     private void NewGameOnClick(object? sender, EventArgs e)
     {
         // Create player entity
-        Engine.Player = Factory.Player();
+        Engine.Player = MapObjects.Factory.Player();
 
         // Calculate initial FOV for player
         Engine.Player.AllComponents.GetFirst<PlayerFOVController>().CalculateFOV();

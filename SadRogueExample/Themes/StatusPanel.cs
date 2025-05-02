@@ -8,14 +8,13 @@ namespace SadRogueExample.Themes;
 /// </summary>
 internal static class StatusPanel
 {
-
     public static readonly Colors HPBarColors = GetHPBarColors();
 
     private static Colors GetHPBarColors()
     {
         var colors = Library.Default.Colors.Clone();
-        colors.Appearance_ControlNormal.Foreground = new(0x0, 0x60, 0x0);
-        colors.Appearance_ControlNormal.Background = new(0x40, 0x10, 0x10);
+        colors.Appearance_ControlNormal.Foreground = MapObjects.Swatch.ForestDark;
+        colors.Appearance_ControlNormal.Background = MapObjects.Swatch.ForestDarkest;
 
         return colors;
     }

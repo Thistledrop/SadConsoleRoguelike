@@ -4,6 +4,7 @@ using SadConsole.UI;
 using SadConsole.UI.Controls;
 using SadConsole.UI.Themes;
 using SadRogue.Primitives;
+using SadRogueExample.MapObjects;
 using SadRogueExample.MapObjects.Components;
 
 namespace SadRogueExample.Screens.Surfaces;
@@ -19,7 +20,7 @@ internal class StatusPanel : ControlsConsole
     public StatusPanel(int width, int height)
         : base(width, height)
     {
-        this.DrawBox(new Rectangle(0, 0, width, height), ShapeParameters.CreateStyledBox(ICellSurface.ConnectedLineThin, new ColoredGlyph(Color.Violet, Color.Black)));
+        this.DrawBox(new Rectangle(0, 0, width, height), ShapeParameters.CreateStyledBox(ICellSurface.ConnectedLineThin, new ColoredGlyph(Swatch.ObsidianDark, Color.Black)));
         this.Print(10, 0, "Stats");
 
         // Create an HP bar with the appropriate coloring and background glyphs

@@ -1,6 +1,7 @@
 ﻿using SadConsole;
 using SadConsole.UI;
 using SadRogue.Primitives;
+using SadRogueExample.MapObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace SadRogueExample.Screens.Surfaces
         public MonsterHealthPanel(int width, int height)
         : base(width, height)
         {
-            this.DrawBox(new Rectangle(0, 0, width, height), ShapeParameters.CreateStyledBox(ICellSurface.ConnectedLineThin, new ColoredGlyph(Color.Violet, Color.Black)));
+            this.DrawBox(new Rectangle(0, 0, width, height), ShapeParameters.CreateStyledBox(ICellSurface.ConnectedLineThin, new ColoredGlyph(Swatch.ObsidianDark, Color.Black)));
             this.Print(8, 0, "Monsters");
         }
     }

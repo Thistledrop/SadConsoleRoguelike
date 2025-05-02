@@ -13,7 +13,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect WelcomeTextAppearance = new()
     {
-        Foreground = new(0x20, 0xA0, 0xFF)
+        Foreground = MapObjects.Swatch.LagoonLightest
     };
 
     /// <summary>
@@ -21,7 +21,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect PlayerAtkAppearance = new()
     {
-        Foreground = new(0xE0, 0xE0, 0xE0)
+        Foreground = MapObjects.Swatch.MossMid
     };
 
     /// <summary>
@@ -29,7 +29,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect EnemyAtkAppearance = new()
     {
-        Foreground = new(0xFF, 0xC0, 0xC0)
+        Foreground = MapObjects.Swatch.FlameDarkest
     };
 
     /// <summary>
@@ -37,7 +37,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect PlayerDiedAppearance = new()
     {
-        Foreground = new(0xFF, 0x30, 0x30)
+        Foreground = MapObjects.Swatch.FlameDarkest
     };
 
     /// <summary>
@@ -45,7 +45,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect EnemyDiedAppearance = new()
     {
-        Foreground = new(0xFF, 0xA0, 0x30)
+        Foreground = MapObjects.Swatch.MossMid
     };
 
     /// <summary>
@@ -53,7 +53,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect ImpossibleActionAppearance = new()
     {
-        Foreground = new(0x80, 0x80, 0x80)
+        Foreground = MapObjects.Swatch.RockLightest
     };
 
     /// <summary>
@@ -61,7 +61,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect ItemPickedUpAppearance = new()
     {
-        Foreground = new(0xFF, 0xFF, 0xFF)
+        Foreground = MapObjects.Swatch.IceMid
     };
 
     /// <summary>
@@ -69,7 +69,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect ItemDroppedAppearance = new()
     {
-        Foreground = new(0xFF, 0xFF, 0xFF)
+        Foreground = MapObjects.Swatch.IceMid
     };
 
     /// <summary>
@@ -77,7 +77,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect HealthRecoveredAppearance = new()
     {
-        Foreground = new(0x0, 0xFF, 0x0)
+        Foreground = MapObjects.Swatch.MossMid
     };
 
     /// <summary>
@@ -85,7 +85,7 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect NeedsTargetAppearance = new()
     {
-        Foreground = new(0x3F, 0xFF, 0xFF)
+        Foreground = MapObjects.Swatch.ObsidianMid
     };
 
     /// <summary>
@@ -93,6 +93,6 @@ internal static class MessageColors
     /// </summary>
     public static readonly ColoredString.ColoredGlyphEffect StatusEffectAppliedAppearance = new()
     {
-        Foreground = new(0x3F, 0xFF, 0xFF)
+        Foreground = MapObjects.Swatch.ObsidianMid
     };
 }

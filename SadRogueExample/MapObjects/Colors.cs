@@ -9,70 +9,115 @@ namespace SadRogueExample.MapObjects
 {
     public static class Colors
     {
-        public static Color DoorBackground = Swatch.ComplimentDarkest;
-        public static Color Door = Swatch.ComplimentLighter;
-        public static Color DoorBackgroundFov = Swatch.ComplimentDarker;
-        public static Color DoorFov = Swatch.ComplimentLightest;
+        public static Color DoorBackground = Color.Black;
+        public static Color Door = Swatch.RockDarkest;
+        public static Color DoorBackgroundFov = Swatch.RockDarkest;
+        public static Color DoorFov = Swatch.SandDarkest;
+
         public static Color FloorBackground = Color.Black;
-        public static Color Floor = Swatch.AlternateDarkest;
-        public static Color FloorBackgroundFov = Swatch.DbDark;
-        public static Color FloorFov = Swatch.Alternate;
-        public static Color WallBackground = Swatch.SecondaryDarkest;
-        public static Color Wall = Swatch.Secondary;
-        public static Color WallBackgroundFov = Swatch.SecondaryDarker;
-        public static Color WallFov = Swatch.SecondaryLighter;
-        public static Color GoblinColor = Color.Green;
-        public static Color KoboldColor = new Color(255, 165, 0);
-        public static Color OozeColor = new Color(102, 205, 170);
-        public static Color Player = Swatch.DbLight;
-        public static Color InventoryHeading = Swatch.DbLight;
+        public static Color Floor = Swatch.RockDarkest;
+        public static Color FloorBackgroundFov = Swatch.RockDarkest;
+        public static Color FloorFov = Swatch.RockMid;
+
+        public static Color WallBackground = Color.Black;
+        public static Color Wall = Swatch.RockDarkest;
+        public static Color WallBackgroundFov = Swatch.RockDarkest;
+        public static Color WallFov = Swatch.RockMid;
+
+        public static Color StairBackground = Color.Black;
+        public static Color Stair = Swatch.RockDarkest;
+        public static Color StairBackgroundFov = Swatch.RockDarkest;
+        public static Color StairFov = Swatch.RockMid;
+
+        public static Color PlayerColor = Swatch.IceLightest;
+
+        public static Color SkeletonColor = Swatch.IceLight;
+        public static Color GoblinColor = Swatch.MossLight;
+        public static Color OozeColor = Swatch.ForestLight;
+        public static Color MimicColor = Swatch.SandDark;
+        public static Color SpiderColor = Swatch.RockDark;
+        public static Color RatsColor = Swatch.SandMid;
+        public static Color HellhoundColor = Swatch.FlameDark;
+        public static Color ConstructColor = Swatch.ObsidianMid;
     }
 
     public static class Swatch
     {
-        // http://paletton.com/#uid=73d0u0k5qgb2NnT41jT74c8bJ8X
+        public static Color RockDarkest = new Color(46, 34, 47);
+        public static Color RockDark = new Color(62, 53, 70);
+        public static Color RockMid = new Color(98, 85, 101);
+        public static Color RockLight = new Color(150, 108, 108);
+        public static Color RockLightest = new Color(171, 148, 122);
 
-        public static Color PrimaryLightest = new Color(110, 121, 119);
-        public static Color PrimaryLighter = new Color(88, 100, 98);
-        public static Color Primary = new Color(68, 82, 79);
-        public static Color PrimaryDarker = new Color(48, 61, 59);
-        public static Color PrimaryDarkest = new Color(29, 45, 42);
+        public static Color IceDarkest = new Color(105, 79, 98);
+        public static Color IceDark = new Color(127, 112, 138);
+        public static Color IceMid = new Color(155, 171, 178);
+        public static Color IceLight = new Color(199, 220, 208);
+        public static Color IceLightest = new Color(255, 255, 255);
 
-        public static Color SecondaryLightest = new Color(116, 120, 126);
-        public static Color SecondaryLighter = new Color(93, 97, 105);
-        public static Color Secondary = new Color(72, 77, 85);
-        public static Color SecondaryDarker = new Color(51, 56, 64);
-        public static Color SecondaryDarkest = new Color(31, 38, 47);
+        public static Color CopperDarkest = new Color(110, 39, 39);
+        public static Color CopperDark = new Color(179, 56, 49);
+        public static Color CopperLight = new Color(234, 79, 54);
+        public static Color CopperLightest = new Color(245, 125, 74);
 
-        public static Color AlternateLightest = new Color(190, 184, 174);
-        public static Color AlternateLighter = new Color(158, 151, 138);
-        public static Color Alternate = new Color(129, 121, 107);
-        public static Color AlternateDarker = new Color(97, 89, 75);
-        public static Color AlternateDarkest = new Color(71, 62, 45);
+        public static Color FlameDarkest = new Color(174, 35, 52);
+        public static Color FlameDark = new Color(232, 59, 59);
+        public static Color FlameMid = new Color(251, 107, 29);
+        public static Color FlameLight = new Color(247, 150, 23);
+        public static Color FlameLightest = new Color(249, 194, 43);
 
-        public static Color ComplimentLightest = new Color(190, 180, 174);
-        public static Color ComplimentLighter = new Color(158, 147, 138);
-        public static Color Compliment = new Color(129, 116, 107);
-        public static Color ComplimentDarker = new Color(97, 84, 75);
-        public static Color ComplimentDarkest = new Color(71, 56, 45);
+        public static Color SandDarkest = new Color(122, 48, 69);
+        public static Color SandDark = new Color(158, 69, 57);
+        public static Color SandMid = new Color(205, 104, 61);
+        public static Color SandLight = new Color(230, 144, 78);
+        public static Color SandLightest = new Color(251, 185, 84);
 
-        // http://pixeljoint.com/forum/forum_posts.asp?TID=12795
+        public static Color ForestDarkest = new Color(76, 62, 36);
+        public static Color ForestDark = new Color(103, 102, 51);
+        public static Color ForestMid = new Color(162, 169, 71);
+        public static Color ForestLight = new Color(213, 224, 75);
+        public static Color ForestLightest = new Color(251, 255, 134);
 
-        public static Color DbDark = new Color(20, 12, 28);
-        public static Color DbOldBlood = new Color(68, 36, 52);
-        public static Color DbDeepWater = new Color(48, 52, 109);
-        public static Color DbOldStone = new Color(78, 74, 78);
-        public static Color DbWood = new Color(133, 76, 48);
-        public static Color DbVegetation = new Color(52, 101, 36);
-        public static Color DbBlood = new Color(208, 70, 72);
-        public static Color DbStone = new Color(117, 113, 97);
-        public static Color DbWater = new Color(89, 125, 206);
-        public static Color DbBrightWood = new Color(210, 125, 44);
-        public static Color DbMetal = new Color(133, 149, 161);
-        public static Color DbGrass = new Color(109, 170, 44);
-        public static Color DbSkin = new Color(210, 170, 153);
-        public static Color DbSky = new Color(109, 194, 202);
-        public static Color DbSun = new Color(218, 212, 94);
-        public static Color DbLight = new Color(222, 238, 214);
+        public static Color LagoonDarkest = new Color(22, 90, 76);
+        public static Color LagoonDark = new Color(35, 144, 99);
+        public static Color LagoonMid = new Color(30, 188, 115);
+        public static Color LagoonLight = new Color(145, 219, 105);
+        public static Color LagoonLightest = new Color(205, 223, 108);
+
+        public static Color MossDarkest = new Color(49, 54, 56);
+        public static Color MossDark = new Color(55, 78, 74);
+        public static Color MossMid = new Color(84, 126, 100);
+        public static Color MossLight = new Color(146, 169, 132);
+        public static Color MossLightest = new Color(178, 186, 144);
+
+        public static Color RiverDarkest = new Color(11, 94, 101);
+        public static Color RiverDark = new Color(11, 138, 143);
+        public static Color RiverMid = new Color(14, 175, 155);
+        public static Color RiverLight = new Color(48, 225, 185);
+        public static Color RiverLightest = new Color(143, 248, 226);
+
+        public static Color MountainDarkest = new Color(50, 51, 83);
+        public static Color MountainDark = new Color(72, 74, 119);
+        public static Color MountainMid = new Color(77, 101, 180);
+        public static Color MountainLight = new Color(77, 155, 230);
+        public static Color MountainLightest = new Color(143, 211, 255);
+
+        public static Color ObsidianDarkest = new Color(69, 41, 63);
+        public static Color ObsidianDark = new Color(107, 62, 117);
+        public static Color ObsidianMid = new Color(144, 94, 169);
+        public static Color ObsidianLight = new Color(168, 132, 243);
+        public static Color ObsidianLightest = new Color(234, 173, 237);
+
+        public static Color DustDarkest = new Color(117, 60, 84);
+        public static Color DustDark = new Color(162, 75, 111);
+        public static Color DustLight = new Color(207, 101, 127);
+        public static Color DustLightest = new Color(237, 128, 153);
+
+        public static Color BubblegumDarkest = new Color(131, 28, 93);
+        public static Color BubblegumDarker = new Color(195, 36, 84);
+        public static Color BubblegumDark = new Color(240, 79, 120);
+        public static Color BubblegumLight = new Color(246, 129, 129);
+        public static Color BubblegumLighter = new Color(252, 167, 144);
+        public static Color BubblegumLightest = new Color(253, 203, 176);
     }
 }

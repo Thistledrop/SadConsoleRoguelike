@@ -1,5 +1,7 @@
 ﻿using SadConsole;
+using SadConsole.UI;
 using SadRogue.Integration;
+using SadRogue.Primitives;
 using SadRogueExample.Screens;
 
 namespace SadRogueExample;

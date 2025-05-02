@@ -2,6 +2,7 @@
 using SadConsole;
 using SadConsole.Components;
 using SadConsole.EasingFunctions;
+using SadRogueExample.MapObjects;
 using SadRogueExample.MapObjects.Components;
 using SadRogueExample.Maps;
 using SadRogueExample.Screens.MainGameMenus;
@@ -71,7 +72,7 @@ internal class MainGame : ScreenObject
         Map = newMap;
 
         Engine.Player.AllComponents.GetFirst<PlayerFOVController>().CalculateFOV();
-        Map.DefaultRenderer = Map.CreateRenderer((Engine.ScreenWidth, Engine.ScreenHeight - BottomPanelHeight));
+        Map.DefaultRenderer = Map.CreateRenderer((Engine.ScreenWidth - StatusWidth, Engine.ScreenHeight - BottomPanelHeight));
         
         Children.Add(Map);
         Map.DefaultRenderer.IsFocused = true;
@@ -117,8 +118,6 @@ internal class MainGame : ScreenObject
 
     public void DisplayStairConfirmation(bool isUp)
     {
-        Engine.MessageLog.Add(new("You bumped the stairs"));
-
         Children.Add(new UseStairsConfirmation(isUp));
     }
 
@@ -131,7 +130,6 @@ internal class MainGame : ScreenObject
 
         Engine.Player.AllComponents.GetFirst<Combatant>().Died -= PlayerDeath;
 
-        // Switch to game over screen
         Children.Add(new GameOver());
     }
 }

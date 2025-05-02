@@ -89,7 +89,7 @@ internal static class Factory
             {
                 bool isOrc = GlobalRandom.DefaultRNG.PercentageCheck(80f);
 
-                var enemy = isOrc ? MapObjects.Factory.Orc() : MapObjects.Factory.Troll();
+                var enemy = isOrc ? MapObjects.Monsters.Goblin() : MapObjects.Monsters.Skeleton();
                 enemy.Position = GlobalRandom.DefaultRNG.RandomPosition(room, pos => map.WalkabilityView[pos]);
                 map.AddEntity(enemy);
             }
