@@ -1,5 +1,6 @@
 ﻿using GoRogue.MapGeneration;
 using GoRogue.MapGeneration.ContextComponents;
+using GoRogue.MapGeneration.Steps;
 using GoRogue.Random;
 using SadRogue.Primitives;
 using SadRogue.Primitives.GridViews;
@@ -37,9 +38,9 @@ internal static class Factory
         var generator = new Generator(config.Width, config.Height)
             .ConfigAndGenerateSafe(gen =>
             {
-                gen.AddSteps(DefaultAlgorithms.DungeonMazeMapSteps(minRooms: config.MinRooms, maxRooms: config.MaxRooms,
-                    roomMinSize: config.RoomMinSize, roomMaxSize: config.RoomMaxSize, saveDeadEndChance: 0))
-                .AddSteps();
+                gen.AddSteps(DefaultAlgorithms.BasicRandomRoomsMapSteps
+                    (minRooms: config.MinRooms, maxRooms: config.MaxRooms,
+                    roomMinSize: config.RoomMinSize, roomMaxSize: config.RoomMaxSize));
             });
 
         // Extract components from the map GoRogue generated which hold basic information about the map
@@ -53,9 +54,9 @@ internal static class Factory
         // Translate GoRogue's terrain data into actual integration library objects.
         map.ApplyTerrainOverlay(generatedMap, (pos, val) => val ? MapObjects.Factory.Floor(pos) : MapObjects.Factory.Wall(pos));
 
-        SpawnStairs(map, rooms);
 
-        SpawnMonsters(map, rooms, config.MaxMonstersPerRoom);
+        SpawnStairs(map, rooms);
+        //SpawnMonsters(map, rooms, config.MaxMonstersPerRoom);
         SpawnItems(map, rooms, config.MaxItemsPerRoom);
 
         return map;

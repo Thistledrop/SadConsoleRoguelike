@@ -45,15 +45,15 @@ internal static class Factory
         {
             "StairUp",
             new TerrainAppearanceDefinition(
-                new ColoredGlyph(Colors.StairFov, Colors.StairBackgroundFov, '^'),
-                new ColoredGlyph(Colors.Stair, Colors.StairBackground, '^')
+                new ColoredGlyph(Colors.DoorFov, Colors.DoorBackgroundFov, '^'),
+                new ColoredGlyph(Colors.Door, Colors.DoorBackground, '^')
             )
         },
         {
             "StairDown",
             new TerrainAppearanceDefinition(
-                new ColoredGlyph(Colors.StairFov, Colors.StairBackgroundFov, 'v'),
-                new ColoredGlyph(Colors.Stair, Colors.StairBackground, 'v')
+                new ColoredGlyph(Colors.DoorFov, Colors.DoorBackgroundFov, 'v'),
+                new ColoredGlyph(Colors.Door, Colors.DoorBackground, 'v')
             )
         },
     };
@@ -66,7 +66,7 @@ internal static class Factory
 
     public static RogueLikeEntity StairUp()
     {
-        var stair = new RogueLikeEntity(Colors.Stair, '^', false, true, layer:(int)GameMap.Layer.Stairs);
+        var stair = new RogueLikeEntity(Colors.WallFov, '^', false, true, layer:(int)GameMap.Layer.Stairs);
 
         stair.AllComponents.Add(new Stair(true));
 
@@ -75,7 +75,7 @@ internal static class Factory
 
     public static RogueLikeEntity StairDown()
     {
-        var stair = new RogueLikeEntity(Colors.Stair, 'v', false, true, layer: (int)GameMap.Layer.Stairs);
+        var stair = new RogueLikeEntity(Colors.WallFov, 'v', false, true, layer: (int)GameMap.Layer.Stairs);
 
         stair.AllComponents.Add(new Stair(false));
 

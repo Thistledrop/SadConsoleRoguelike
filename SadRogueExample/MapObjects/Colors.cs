@@ -11,23 +11,18 @@ namespace SadRogueExample.MapObjects
     {
         public static Color DoorBackground = Color.Black;
         public static Color Door = Swatch.RockDarkest;
-        public static Color DoorBackgroundFov = Swatch.RockDarkest;
+        public static Color DoorBackgroundFov = Color.Black;
         public static Color DoorFov = Swatch.SandDarkest;
 
         public static Color FloorBackground = Color.Black;
         public static Color Floor = Swatch.RockDarkest;
-        public static Color FloorBackgroundFov = Swatch.RockDarkest;
+        public static Color FloorBackgroundFov = Color.Black;
         public static Color FloorFov = Swatch.RockMid;
 
         public static Color WallBackground = Color.Black;
-        public static Color Wall = Swatch.RockDarkest;
-        public static Color WallBackgroundFov = Swatch.RockDarkest;
+        public static Color Wall = Swatch.RockDark;
+        public static Color WallBackgroundFov = Color.Black;
         public static Color WallFov = Swatch.RockMid;
-
-        public static Color StairBackground = Color.Black;
-        public static Color Stair = Swatch.RockDarkest;
-        public static Color StairBackgroundFov = Swatch.RockDarkest;
-        public static Color StairFov = Swatch.RockMid;
 
         public static Color PlayerColor = Swatch.IceLightest;
 
