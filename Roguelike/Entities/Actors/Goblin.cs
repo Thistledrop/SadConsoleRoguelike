@@ -5,7 +5,7 @@ namespace Roguelike.Entities.Actors
     internal class Goblin : Actor
     {
         public Goblin(Point position) : 
-            base(Color.Green, Color.Transparent, 'g', 1, maxHealth: 5)
+            base(MyColors.green, Color.Transparent, 'g', 1, maxHealth: 5)
         {
             Name = "Goblin";
             Position = position;

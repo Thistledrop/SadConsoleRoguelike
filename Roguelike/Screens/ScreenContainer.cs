@@ -10,9 +10,11 @@ namespace Roguelike.Screens
     /// </summary>
     internal class ScreenContainer : ScreenObject
     {
+        //Singleton code
         private static ScreenContainer _instance;
         public static ScreenContainer Instance => _instance ?? throw new Exception("ScreenContainer is not yet initialized.");
 
+        //Screen Sections
         public WorldScreen World { get; }
         public PlayerStatsScreen PlayerStats { get; }
         public MessagesScreen Messages { get; }

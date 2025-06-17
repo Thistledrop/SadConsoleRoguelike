@@ -14,7 +14,8 @@ namespace Roguelike.Screens
         public void UpdatePlayerStats()
         {
             Surface.Clear();
-            Surface.DrawBorderWithTitle("Attributes", Color.Gray, Color.Magenta);
+            Surface.DrawBorderWithTitle("Attributes", MyColors.darkerBlue, MyColors.lightBlue);
+            Surface.Fill(background: MyColors.grayBlack);
             DrawPlayerAttributes();
         }
 

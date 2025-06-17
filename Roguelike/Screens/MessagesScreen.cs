@@ -29,7 +29,8 @@ namespace Roguelike.Screens
             Children.Add(_messageSurface);
 
             // Draw the main border around the message screen
-            Surface.DrawBorderWithTitle("Messages", Color.Gray, Color.Magenta);
+            Surface.DrawBorderWithTitle("Messages", MyColors.darkerBlue, MyColors.lightBlue);
+            Surface.Fill(background:MyColors.grayBlack);
         }
 
         public void AddMessage(string message)
@@ -52,7 +53,9 @@ namespace Roguelike.Screens
 
         private void DrawMessages()
         {
+            
             _messageSurface.Surface.Clear();
+           
 
             // Print the "oldest" message at the top, newest at the bottom
             var startPos = new Point(2, 1);

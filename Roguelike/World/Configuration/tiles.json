@@ -1,37 +1,37 @@
 ﻿[
-  {
-    "Type": "None",
-    "Obstruction": "FullyBlocked",
-    "Foreground": "#00000000",
-    "Background": "#00000000",
-    "Glyph": 0
-  },
-  {
-    "Type": "Floor",
-    "Obstruction": "Open",
-    "Foreground": "#808080",
-    "Background": "#00000000",
-    "Glyph": "."
-  },
-  {
-    "Type": "Wall",
-    "Obstruction": "FullyBlocked",
-    "Foreground": "#f4a460",
-    "Background": "#00000000",
-    "Glyph": "#"
-  },
-  {
-    "Type": "Door",
-    "Obstruction": "VisionBlocked",
-    "Foreground": "#ff4500",
-    "Background": "#00000000",
-    "Glyph": "+"
-  },
-  {
-    "Type": "StairsDown",
-    "Obstruction": "VisionBlocked",
-    "Foreground": "#828282",
-    "Background": "#00000000",
-    "Glyph": 31
-  }
+    {
+        "Type": "None",
+        "Obstruction": "FullyBlocked",
+        "Foreground": "#19191E",
+        "Background": "#19191E",
+        "Glyph": 0
+    },
+    {
+        "Type": "Floor",
+        "Obstruction": "Open",
+        "Foreground": "#5d4776",
+        "Background": "#19191E",
+        "Glyph": "."
+    },
+    {
+        "Type": "Wall",
+        "Obstruction": "FullyBlocked",
+        "Foreground": "#4c60aa",
+        "Background": "#19191E",
+        "Glyph": "#"
+    },
+    {
+        "Type": "Door",
+        "Obstruction": "VisionBlocked",
+        "Foreground": "#5fa1e7",
+        "Background": "#19191E",
+        "Glyph": "+"
+    },
+    {
+        "Type": "StairsDown",
+        "Obstruction": "VisionBlocked",
+        "Foreground": "#5d4776",
+        "Background": "#19191E",
+        "Glyph": 31
+    }
 ]

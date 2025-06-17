@@ -27,6 +27,7 @@ namespace Roguelike.Screens
 
             // Setup a new surface matching with our tiles
             Surface = new CellSurface(width, height, Tilemap.Tiles);
+            Surface.Fill(background: MyColors.grayBlack);
 
             // Add the entity component to the world screen, so we can track entities
             ActorManager = new ActorManager();

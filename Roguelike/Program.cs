@@ -16,7 +16,7 @@ namespace Roguelike
 
             Builder gameStartup = new Builder()
                 .SetScreenSize(60, 40)
-                .SetStartingScreen<ScreenContainer>()
+                .SetStartingScreen<ScreenContainer>() //ScreenContainer is a custom Screen
                 .OnStart(GameStart)
                 .IsStartingScreenFocused(true)
                 .ConfigureFonts((fontConfig, game) =>
