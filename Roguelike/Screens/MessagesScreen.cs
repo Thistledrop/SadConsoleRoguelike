@@ -22,9 +22,6 @@ namespace Roguelike.Screens
                 Position = new Point(1, 1) // Position within the border
             };
 
-            // You can use this so see if the surface fits within the screen
-            //_messageSurface.Fill(background: Color.Blue);
-
             // Add to children so the parent can handle its rendering
             Children.Add(_messageSurface);
 

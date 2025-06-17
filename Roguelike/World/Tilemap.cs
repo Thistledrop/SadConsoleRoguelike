@@ -22,7 +22,7 @@ namespace Roguelike.World
                 {
                     Tiles[Point.ToIndex(x, y, width)] = new Tile(x, y)
                     {
-                        Obstruction = ObstructionType.FullyBlocked
+                        Type = TileType.None
                     };
                 }
             }

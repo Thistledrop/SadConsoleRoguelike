@@ -27,7 +27,7 @@ namespace Roguelike.Screens
 
             // Setup a new surface matching with our tiles
             Surface = new CellSurface(width, height, Tilemap.Tiles);
-            Surface.Fill(background: MyColors.grayBlack);
+            
 
             // Add the entity component to the world screen, so we can track entities
             ActorManager = new ActorManager();
@@ -40,6 +40,7 @@ namespace Roguelike.Screens
         public void Generate()
         {
             Surface.Clear();
+            Surface.Fill(background: MyColors.grayBlack);
 
             // Generate new dungeon layout
             DungeonGenerator.Generate(Tilemap, 10, 4, 10, out var dungeonRooms);
