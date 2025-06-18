@@ -15,6 +15,7 @@ namespace Roguelike.Screens
         public static ScreenContainer Instance => _instance ?? throw new Exception("ScreenContainer is not yet initialized.");
 
         //Screen Sections
+        private ScreenSurface Backdrop;
         public WorldScreen World { get; }
         public PlayerStatsScreen PlayerStats { get; }
         public MessagesScreen Messages { get; }
@@ -28,6 +29,9 @@ namespace Roguelike.Screens
             _instance = this;
 
             Random = new Random();
+            Backdrop = new ScreenSurface(Game.Instance.ScreenCellsX, Game.Instance.ScreenCellsY);
+            Backdrop.Surface.Fill(background: MyColors.darkerGray);
+            Children.Add(Backdrop);
 
             // World screen
             World = new WorldScreen(Game.Instance.ScreenCellsX.PercentageOf(70), Game.Instance.ScreenCellsY.PercentageOf(70));

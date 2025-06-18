@@ -23,6 +23,7 @@ namespace Roguelike
         public static readonly Color darkestBlue = new Color(68, 71, 116);
 
         public static readonly Color grayBlack = new Color(50, 49, 59);
+        public static readonly Color darkerGray = new Color(25, 24, 29);
 
         public static readonly Color darkerPurple = new Color(70, 60, 94);
         public static readonly Color darkPurple = new Color(93, 71, 118);

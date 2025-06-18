@@ -27,7 +27,6 @@ namespace Roguelike.Screens
 
             // Draw the main border around the message screen
             Surface.DrawBorderWithTitle("Messages", MyColors.darkerBlue, MyColors.lightBlue);
-            Surface.Fill(background:MyColors.grayBlack);
         }
 
         public void AddMessage(string message)

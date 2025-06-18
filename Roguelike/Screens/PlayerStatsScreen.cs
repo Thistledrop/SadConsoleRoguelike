@@ -15,7 +15,6 @@ namespace Roguelike.Screens
         {
             Surface.Clear();
             Surface.DrawBorderWithTitle("Attributes", MyColors.darkerBlue, MyColors.lightBlue);
-            Surface.Fill(background: MyColors.grayBlack);
             DrawPlayerAttributes();
         }
 

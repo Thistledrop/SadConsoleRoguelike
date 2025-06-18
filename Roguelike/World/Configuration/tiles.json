@@ -3,35 +3,35 @@
         "Type": "None",
         "Obstruction": "FullyBlocked",
         "Foreground": "#19191E",
-        "Background": "#19191E",
+        "Background": "#32313b",
         "Glyph": 0
     },
     {
         "Type": "Floor",
         "Obstruction": "Open",
         "Foreground": "#5d4776",
-        "Background": "#19191E",
+        "Background": "#32313b",
         "Glyph": "."
     },
     {
         "Type": "Wall",
         "Obstruction": "FullyBlocked",
         "Foreground": "#4c60aa",
-        "Background": "#19191E",
+        "Background": "#32313b",
         "Glyph": "#"
     },
     {
         "Type": "Door",
         "Obstruction": "VisionBlocked",
         "Foreground": "#5fa1e7",
-        "Background": "#19191E",
+        "Background": "#32313b",
         "Glyph": "+"
     },
     {
         "Type": "StairsDown",
         "Obstruction": "VisionBlocked",
         "Foreground": "#5d4776",
-        "Background": "#19191E",
+        "Background": "#32313b",
         "Glyph": 31
     }
 ]
