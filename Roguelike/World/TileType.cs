@@ -6,6 +6,7 @@
         Floor,
         Wall,
         Door,
+        OpenDoor,
         StairsDown
     }
 }

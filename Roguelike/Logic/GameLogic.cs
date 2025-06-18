@@ -2,6 +2,8 @@
 using Roguelike.Entities;
 using Roguelike.Entities.Actors;
 using Roguelike.Screens;
+using Roguelike.World;
+using SadConsole;
 using SadRogue.Primitives;
 using System.Linq;
 
@@ -32,7 +34,7 @@ namespace Roguelike.Logic
             if (!hasMoved) return false;
 
             // Check if we moved onto a stairs down tile
-            var tile = ScreenContainer.Instance.World.Tilemap[intendedPosition.ToIndex(ScreenContainer.Instance.World.Tilemap.Width)];
+            var tile = ScreenContainer.Instance.World.WorldTileMap[intendedPosition.ToIndex(ScreenContainer.Instance.World.WorldTileMap.Width)];
             if (tile.Type == World.TileType.StairsDown)
             {
                 // Generate a new world / dungeon when going stairs down
@@ -45,6 +47,7 @@ namespace Roguelike.Logic
         private static void HandlePathfindingAndCombat(Point intendedPosition)
         {
             var hasMoved = Player.Position == intendedPosition;
+            var tile = ScreenContainer.Instance.World.WorldTileMap[intendedPosition.ToIndex(ScreenContainer.Instance.World.WorldTileMap.Width)];
             var npcAtIntendedPosition = ActorManager.Get(intendedPosition);
 
             if (!hasMoved && npcAtIntendedPosition != null)
@@ -52,6 +55,12 @@ namespace Roguelike.Logic
                 // The player didn't move but an actor is at the intended position, so we attempted to move into the actor
                 // This counts as an attack from the player to the actor
                 MeleeCombatLogic.Attack(Player, npcAtIntendedPosition);
+            }
+
+            //If player moved and if tile player is on is a door(closed), change tile type to an open doorddw
+            if(hasMoved && tile.Type == TileType.Door)
+            {
+                tile.Type = TileType.OpenDoor;
             }
 
             // Calculate for each actor in the player's FOV, to move one tile towards the player.
@@ -64,6 +73,8 @@ namespace Roguelike.Logic
 
             foreach (var npcInFov in npcsInFov)
             {
+                //TODO: pass npcs to stats page for display
+
                 var shortestPath = Pathfinder.ShortestPath(npcInFov.Position, Player.Position);
                 if (shortestPath == null || shortestPath.Length == 0) continue;
 

@@ -4,7 +4,8 @@ Loosely based on the old Fate games.
 
 ToDo List
 -
-- Doors should 'open' (aka show a different glyph) once they've been passed through
+- ~~Doors should 'open' (aka show a different glyph) once they've been passed through~~
 - ~~Colors need to be revamped~~
 - New Monsters!!
 - Bigger Mazes
+- Monsters health show on a new 'stat' screen

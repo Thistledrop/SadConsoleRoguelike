@@ -18,7 +18,7 @@ namespace Roguelike.Entities
 
         public virtual bool Move(int x, int y)
         {
-            var tilemap = ScreenContainer.Instance.World.Tilemap;
+            var tilemap = ScreenContainer.Instance.World.WorldTileMap;
             var actorManager = ScreenContainer.Instance.World.ActorManager;
 
             if (!IsAlive || (Position.X == x && Position.Y == y)) return false;

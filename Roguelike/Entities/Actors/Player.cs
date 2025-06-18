@@ -31,7 +31,7 @@ namespace Roguelike.Entities.Actors
             Name = "Player";
 
             // Setup FOV map
-            var tilemap = ScreenContainer.Instance.World.Tilemap;
+            var tilemap = ScreenContainer.Instance.World.WorldTileMap;
             FieldOfView = new RecursiveShadowcastingFOV(new LambdaGridView<bool>(tilemap.Width, tilemap.Height,
                 (point) => !BlocksFov(tilemap[point.X, point.Y].Obstruction)));
 
@@ -43,7 +43,7 @@ namespace Roguelike.Entities.Actors
         public void ExploreCurrentFov()
         {
             // Used when we teleport
-            var tilemap = ScreenContainer.Instance.World.Tilemap;
+            var tilemap = ScreenContainer.Instance.World.WorldTileMap;
             foreach (var point in FieldOfView.CurrentFOV)
             {
                 tilemap[point.X, point.Y].IsVisible = true;
@@ -54,7 +54,7 @@ namespace Roguelike.Entities.Actors
 
         private void ExploreTilemap()
         {
-            var tilemap = ScreenContainer.Instance.World.Tilemap;
+            var tilemap = ScreenContainer.Instance.World.WorldTileMap;
 
             // Seen tiles entering the FOV
             foreach (var point in FieldOfView.NewlySeen)

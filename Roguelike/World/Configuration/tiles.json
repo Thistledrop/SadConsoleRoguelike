@@ -28,6 +28,13 @@
         "Glyph": "+"
     },
     {
+        "Type": "OpenDoor",
+        "Obstruction": "Open",
+        "Foreground": "#5fa1e7",
+        "Background": "#32313b",
+        "Glyph": "-"
+    },
+    {
         "Type": "StairsDown",
         "Obstruction": "VisionBlocked",
         "Foreground": "#5d4776",

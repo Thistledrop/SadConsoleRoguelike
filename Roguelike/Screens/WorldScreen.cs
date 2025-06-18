@@ -14,7 +14,7 @@ namespace Roguelike.Screens
 {
     internal class WorldScreen : ScreenSurface
     {
-        public readonly Tilemap Tilemap;
+        public readonly Tilemap WorldTileMap;
         public readonly ActorManager ActorManager;
         public readonly FastAStar Pathfinder;
 
@@ -23,10 +23,10 @@ namespace Roguelike.Screens
         public WorldScreen(int width, int height) : base(width, height)
         {
             // Setup tilemap
-            Tilemap = new Tilemap(width, height);
+            WorldTileMap = new Tilemap(width, height);
 
             // Setup a new surface matching with our tiles
-            Surface = new CellSurface(width, height, Tilemap.Tiles);
+            Surface = new CellSurface(width, height, WorldTileMap.Tiles);
             
 
             // Add the entity component to the world screen, so we can track entities
@@ -34,7 +34,7 @@ namespace Roguelike.Screens
             SadComponents.Add(ActorManager.EntityComponent);
 
             // Setup the pathfinder
-            Pathfinder = new FastAStar(new LambdaGridView<bool>(Tilemap.Width, Tilemap.Height, (a) => !BlocksMovement(Tilemap[a.X, a.Y].Obstruction)), Distance.Manhattan);
+            Pathfinder = new FastAStar(new LambdaGridView<bool>(WorldTileMap.Width, WorldTileMap.Height, (a) => !BlocksMovement(WorldTileMap[a.X, a.Y].Obstruction)), Distance.Manhattan);
         }
 
         public void Generate()
@@ -43,7 +43,7 @@ namespace Roguelike.Screens
             Surface.Fill(background: MyColors.grayBlack);
 
             // Generate new dungeon layout
-            DungeonGenerator.Generate(Tilemap, 10, 4, 10, out var dungeonRooms);
+            DungeonGenerator.Generate(WorldTileMap, 10, 4, 10, out var dungeonRooms);
             if (dungeonRooms.Count == 0)
                 throw new Exception("Faulty dungeon generation, no rooms!");
 
