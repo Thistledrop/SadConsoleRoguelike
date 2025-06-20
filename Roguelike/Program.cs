@@ -15,7 +15,7 @@ namespace Roguelike
             Settings.ResizeMode = Settings.WindowResizeOptions.Stretch;
 
             Builder gameStartup = new Builder()
-                .SetScreenSize(60, 40)
+                .SetScreenSize(80, 50)
                 .SetStartingScreen<ScreenContainer>() //ScreenContainer is a custom Screen
                 .OnStart(GameStart)
                 .IsStartingScreenFocused(true)

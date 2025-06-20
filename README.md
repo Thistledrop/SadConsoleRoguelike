@@ -9,3 +9,5 @@ ToDo List
 - New Monsters!!
 - Bigger Mazes
 - Monsters health show on a new 'stat' screen
+- "You died" and "restart" screens
+- Main menu
