@@ -11,3 +11,5 @@ ToDo List
 - Monsters health show on a new 'stat' screen
 - "You died" and "restart" screens
 - Main menu
+
+Link: https://nanzington.github.io/mainTutorial/02alt.html
