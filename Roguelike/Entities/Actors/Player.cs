@@ -2,6 +2,7 @@
 using Roguelike.Logic;
 using Roguelike.Screens;
 using Roguelike.World;
+using SadConsole;
 using SadConsole.Input;
 using SadRogue.Primitives;
 using SadRogue.Primitives.GridViews;
@@ -74,6 +75,9 @@ namespace Roguelike.Entities.Actors
 
         private void Player_PositionChanged(object sender, ValueChangedEventArgs<Point> e)
         {
+            //Update the Viewport
+            ScreenContainer.Instance.World.Surface.ViewPosition = ScreenContainer.Instance.World.Player.AbsolutePosition;
+
             // Calculate the field of view for the player's position
             FieldOfView.Calculate(e.NewValue, FovRadius);
 

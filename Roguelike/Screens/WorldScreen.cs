@@ -20,14 +20,13 @@ namespace Roguelike.Screens
 
         public Player Player { get; private set; }
 
-        public WorldScreen(int width, int height) : base(width, height)
+        public WorldScreen(int viewWidth, int viewHeight, int fullWidth, int fullHeight) : base(viewWidth, viewHeight, fullWidth, fullHeight)
         {
             // Setup tilemap
-            WorldTileMap = new Tilemap(width, height);
+            WorldTileMap = new Tilemap(fullWidth, fullHeight);
 
             // Setup a new surface matching with our tiles
-            Surface = new CellSurface(width, height, WorldTileMap.Tiles);
-            
+            Surface = new CellSurface(viewWidth, viewHeight, fullWidth, fullHeight, WorldTileMap.Tiles);
 
             // Add the entity component to the world screen, so we can track entities
             ActorManager = new ActorManager();
@@ -43,7 +42,7 @@ namespace Roguelike.Screens
             Surface.Fill(background: MyColors.grayBlack);
 
             // Generate new dungeon layout
-            DungeonGenerator.Generate(WorldTileMap, 10, 4, 10, out var dungeonRooms);
+            DungeonGenerator.Generate(WorldTileMap, 30, 8, 20, out var dungeonRooms);
             if (dungeonRooms.Count == 0)
                 throw new Exception("Faulty dungeon generation, no rooms!");
 
@@ -53,6 +52,7 @@ namespace Roguelike.Screens
             {
                 // Init player if doesn't exist yet
                 CreatePlayer(spawnPosition);
+                Surface.ViewPosition = spawnPosition;
             }
             else
             {

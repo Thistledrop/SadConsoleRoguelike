@@ -34,7 +34,7 @@ namespace Roguelike.Screens
             Children.Add(Backdrop);
 
             // World screen
-            World = new WorldScreen(Game.Instance.ScreenCellsX.PercentageOf(70), Game.Instance.ScreenCellsY.PercentageOf(70));
+            World = new WorldScreen(Game.Instance.ScreenCellsX.PercentageOf(70), Game.Instance.ScreenCellsY.PercentageOf(70), Constants.DungeonWidth, Constants.DungeonHeight);
             Children.Add(World);
 
             // Player stats screen

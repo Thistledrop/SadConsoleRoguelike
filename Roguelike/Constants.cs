@@ -12,8 +12,8 @@ namespace Roguelike
         public const string TileConfiguration = "World/Configuration/tiles.json";
         public const int PlayerFieldOfViewRadius = 6;
 
-        public const int DungeonWidth = 500;
-        public const int DungeonHeight = 500;
+        public const int DungeonWidth = 100;
+        public const int DungeonHeight = 100;
     }
 
     internal static class MyColors
