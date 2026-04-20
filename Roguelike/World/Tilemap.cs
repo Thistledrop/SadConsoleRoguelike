@@ -83,7 +83,7 @@ namespace Roguelike.World
                     Tiles[Point.ToIndex(x, y, Width)].Clear();
                     Tiles[Point.ToIndex(x, y, Width)].Type = TileType.None;
                     Tiles[Point.ToIndex(x, y, Width)].InFov = false;
-                    Tiles[Point.ToIndex(x, y, Width)].IsVisible = false;
+                    Tiles[Point.ToIndex(x, y, Width)].IsVisible = Constants.EXPLORE_ALL;
                     Tiles[Point.ToIndex(x, y, Width)].Obstruction = ObstructionType.FullyBlocked;
                 }
             }

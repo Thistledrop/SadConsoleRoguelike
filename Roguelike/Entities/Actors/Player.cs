@@ -76,7 +76,7 @@ namespace Roguelike.Entities.Actors
         private void Player_PositionChanged(object sender, ValueChangedEventArgs<Point> e)
         {
             //Update the Viewport
-            ScreenContainer.Instance.World.Surface.ViewPosition = ScreenContainer.Instance.World.Player.AbsolutePosition;
+            ScreenContainer.Instance.World.Surface.ViewPosition = e.NewValue - Constants.ViewOffset;
 
             // Calculate the field of view for the player's position
             FieldOfView.Calculate(e.NewValue, FovRadius);

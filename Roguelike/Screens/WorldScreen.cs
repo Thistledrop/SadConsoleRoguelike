@@ -52,7 +52,7 @@ namespace Roguelike.Screens
             {
                 // Init player if doesn't exist yet
                 CreatePlayer(spawnPosition);
-                Surface.ViewPosition = spawnPosition;
+                Surface.ViewPosition = spawnPosition - Constants.ViewOffset;
             }
             else
             {

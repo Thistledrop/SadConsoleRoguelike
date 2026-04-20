@@ -7,6 +7,8 @@ namespace Roguelike
     /// </summary>
     internal static class Constants
     {
+        public const bool EXPLORE_ALL = false;
+
         public const string GameTitle = "Roguelike";
         public const string Font = "Fonts/Curses.font";
         public const string TileConfiguration = "World/Configuration/tiles.json";
@@ -14,6 +16,8 @@ namespace Roguelike
 
         public const int DungeonWidth = 100;
         public const int DungeonHeight = 100;
+
+        public static Point ViewOffset = new Point(10, 10);
     }
 
     internal static class MyColors
